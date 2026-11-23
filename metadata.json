@@ -1,0 +1,6 @@
+{
+  "name": "DOT CRM - Real Estate CRM for Brokers",
+  "description": "DOT CRM is a real estate CRM built for brokers — manage leads, properties, site visits, pipeline, and your broker network, all in one place.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

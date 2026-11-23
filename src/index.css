@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #F4F7FB;
+  --card: #FFFFFF;
+  --label: #202B3C;
+  --label2: rgba(32, 43, 60, 0.8);
+  --label3: rgba(32, 43, 60, 0.62);
+  --label4: rgba(32, 43, 60, 0.38);
+  --sep: rgba(32, 43, 60, 0.22);
+  --sep2: rgba(32, 43, 60, 0.12);
+
+  --primary: #101C35;
+  --secondary: #27C6A0;
+  --blue: #101C35;
+  --purple: #27C6A0;
+  --green: #27C6A0;
+  --dark-green: #101C35;
+  --orange: #ff9500;
+  --red: #ff3b30;
+  --teal: #27C6A0;
+  --pink: #101C35;
+  --golden: #b8860b;
+
+  --fill1: rgba(32, 43, 60, 0.16);
+  --fill2: rgba(32, 43, 60, 0.11);
+  --fill3: rgba(32, 43, 60, 0.06);
+}
+
+.dark {
+  --bg: #0b1324;
+  --card: #101C35;
+  --label: #F4F7FB;
+  --label2: #d8e0ec;
+  --label3: rgba(244, 247, 251, 0.68);
+  --label4: rgba(244, 247, 251, 0.38);
+  --sep: rgba(244, 247, 251, 0.22);
+  --sep2: rgba(244, 247, 251, 0.12);
+  --fill1: rgba(244, 247, 251, 0.2);
+  --fill2: rgba(244, 247, 251, 0.14);
+  --fill3: rgba(244, 247, 251, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--bg);
+  color: var(--label);
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-id {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Onboarding Glow Animations */
+@keyframes slideBlueGlow {
+  0% { transform: translateY(-80px); opacity: 0; }
+  100% { transform: translateY(40px); opacity: 1; }
+}
+@keyframes slidePurpleGlow {
+  0% { transform: translateY(80px); opacity: 0; }
+  100% { transform: translateY(-40px); opacity: 1; }
+}
+@keyframes fastRevealUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes donbBarFill {
+  from { width: 0%; }
+  to { width: var(--pct); }
+}
+@keyframes donbKnob {
+  from { left: 0%; opacity: 0; }
+  20% { opacity: 1; }
+  to { left: var(--pct); opacity: 1; }
+}
+@keyframes donbRing {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+@keyframes donbPopIn {
+  0% { transform: scale(0.45); opacity: 0; }
+  70% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes sheetSlideUp {
+  from { transform: translateY(36px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-blue-glow {
+  animation: slideBlueGlow 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.animate-purple-glow {
+  animation: slidePurpleGlow 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.animate-reveal-up {
+  animation: fastRevealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-donb-pop {
+  animation: donbPopIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-donb-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid rgba(39, 198, 160, 0.45);
+  animation: donbRing 1.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+.animate-sheet-up {
+  animation: sheetSlideUp 0.26s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.donb-bar-fill {
+  animation: donbBarFill 0.65s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+}
+.donb-bar-knob {
+  animation: donbKnob 0.65s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
